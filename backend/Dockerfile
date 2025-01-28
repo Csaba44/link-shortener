@@ -4,15 +4,21 @@ FROM node
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and install dependencies
-COPY package.json .
+# Install dependencies
+COPY package.json package-lock.json ./
 RUN npm install
 
-# Copy all other files
+# Install TypeScript globally (if needed)
+RUN npm install -g typescript
+
+# Copy all files
 COPY . .
+
+# Compile TypeScript files
+RUN tsc
 
 # Expose the app on port 5000
 EXPOSE 5000
 
 # Start the server
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

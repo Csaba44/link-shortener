@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",  // Output compiled files to the `dist` directory
+    "rootDir": "./src",  // Define where your TypeScript files will be (e.g., inside `src`)
+    "resolveJsonModule": true,
+    "types": ["node", "express"]
+  },
+  "include": ["src/**/*.ts"],  // Include all .ts files in the `src` folder
+  "exclude": ["node_modules"]
+}

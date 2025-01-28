@@ -6,7 +6,7 @@ export default defineConfig({
     server: {
         proxy: {
             '/api': {
-                target: 'http://backend:5000', // Docker Compose backend service
+                target: 'http://backend:3000', // Docker Compose backend service
                 changeOrigin: true,
             },
         },

@@ -1,13 +1,23 @@
+version: '3'
+
 services:
   frontend:
     image: csaba44/miniplex-frontend:latest
     ports:
-      - "5173:5173"
+      - "5173:5173"  # Make sure this port matches the port used by your frontend
     volumes:
-      - ./frontend:/app
+      - ./frontend:/app  # Mount the frontend code inside the container
+    command: npm run dev -- --host 0.0.0.0  # Add the --host flag here
+
   backend:
     image: csaba44/miniplex-backend:latest
     ports:
       - "5000:5000"
     volumes:
       - ./backend:/app
+    command: npm run dev  # Make sure it runs "ts-node-dev" to compile TS code
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - frontend
+
